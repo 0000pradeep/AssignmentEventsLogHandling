@@ -3,7 +3,7 @@ This handles events logs and raises alerts accordingly
 
 **PREREQUISITES** - Java 8 , Maven should be installed .
 
-**INPUT** - Go to Resources >> Config >> Environment.properties and give the desired path of **LOG_FILE_LOCATION**;
+**INPUT** - Go to Resources >> Config >> Environment.properties and give the desired path of **LOG_FILE_LOCATION** , If Kept **Blank** , it will take the ** default log file** from project directory.
 
 **EXECUTE** - It can be executed in three ways 
 1) From Cmd - 
