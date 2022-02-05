@@ -1,7 +1,7 @@
 # AssignmentEventsLogHandling
 This handles events logs and raises alerts accordingly
 
-**INPUT** - Go to Resources >> Config >> Environment.properties and give the desired path of LOG_FILE_LOCATION;
+**INPUT** - Go to Resources >> Config >> Environment.properties and give the desired path of **LOG_FILE_LOCATION**;
 
 **EXECUTE** - It can be executed in three ways 
 1) From Cmd - 
@@ -12,4 +12,6 @@ Go to working directory and paste **mvn clean install exec:java -Dexec.mainClass
  
 3) Clean the project and directly run the main class ( com.main.execute.Executor) Right Click > Run As > Java Application
 
-**OUTPUT** - Go to target/db-data/assignmentdb.log  to analysis the result .Also Result can be referred from **Logs > ConsoleLogs > testlog.log** and **Logs > ConsoleLogs > testlog1.log.**
+**OUTPUT** - Once the Build is completed , Go to target/db-data/assignmentdb txt file to analysis the result . Also Result can be referred from **Logs > ConsoleLogs > testlog.log** and **Logs > ConsoleLogs > testlog1.log.**
+
+**UNIT TESTS** -- Unit tests can be found inside ValidateEventHandler.java
