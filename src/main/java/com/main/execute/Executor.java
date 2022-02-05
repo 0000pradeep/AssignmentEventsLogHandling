@@ -15,9 +15,13 @@ public class Executor {
 	static Properties prop = null;
 	public static void main(String[] args) throws Throwable {
 		FileInputStream istream = new FileInputStream(new File(System.getProperty("user.dir") + "\\Resources\\Config\\Environment.properties"));
+		String logFilePath;
 		prop = new Properties();
 		prop.load(istream);
-		String logFilePath = prop.getProperty("LOG_FILE_LOCATION");
+		logFilePath = prop.getProperty("LOG_FILE_LOCATION");
+		if(logFilePath.equals("")){
+			logFilePath = System.getProperty("user.dir") + "\\Resources\\Config\\logfile.txt";	
+		}
 		log.info("Starting Analysing the Events logs.......");
 		EventHandler.getEventStats(logFilePath);
 		EventHandler.createRecordInDb(logFilePath);
