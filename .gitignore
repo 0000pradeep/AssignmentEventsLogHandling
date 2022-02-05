@@ -1,2 +1,4 @@
 Logs/
 .classpath/
+target/
+.settings/
