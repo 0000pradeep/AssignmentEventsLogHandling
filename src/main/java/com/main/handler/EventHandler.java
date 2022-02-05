@@ -1,10 +1,11 @@
 package com.main.handler;
 
 import java.io.BufferedReader;
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -15,7 +16,7 @@ import com.main.utils.DbUtils;
 
 public class EventHandler {
 	static BufferedReader breader = null;
-	static FileReader freader = null;
+	static  InputStream inputStream = null;
 	static Logger log;
 
 	public static void initialiseReports() throws Exception {
@@ -24,23 +25,20 @@ public class EventHandler {
 	}
 
 	public static Map<Object, Map<Object, Object>> getEventDuration(String pathOfLogFile) {
+		
+		
 		try {
 			initialiseReports();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		if (pathOfLogFile.equals("")) {
-			pathOfLogFile = System.getProperty("user.dir") + "\\Resources\\Config\\logfile.txt";
-
-		}
 		try {
-			freader = new FileReader(new File(pathOfLogFile));
+			  inputStream = new FileInputStream(pathOfLogFile);
 		} catch (FileNotFoundException e) {
 			log.info("The input log file is not found");
 			log.debug("Exception found ", e);
 		}
-		breader = new BufferedReader(freader);
+		   breader = new BufferedReader(new InputStreamReader(inputStream));
 		Map<Object, Map<Object, Object>> map = new LinkedHashMap<>();
 		Map<Object, Object> innerMap = new LinkedHashMap<>();
 		String jsonLog;
@@ -90,7 +88,7 @@ public class EventHandler {
 			}
 		} finally {
 			try {
-				freader.close();
+				inputStream.close();
 				log.info("File Reader is closed");
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -129,8 +127,8 @@ public class EventHandler {
 
 	}
 
-	public static void createRecordInDb() throws Throwable {
-		Map<Object, Map<Object, Object>> map = getEventStats("");
+	public static void createRecordInDb(String logFilePath) throws Throwable {
+		Map<Object, Map<Object, Object>> map = getEventStats(logFilePath);
 		String createTable = DbUtils.readToString("Resources/Sql/create.sql");
 		String insertData = DbUtils.readToString("Resources/Sql/insert.sql");
 		DbUtils.getDbConnection();
@@ -166,7 +164,6 @@ public class EventHandler {
 		  log.info("Record Successfully Inserted Having Event Id as " +key);
 		  insertDataBuilder.setLength(0);
 	}
-
 
 }
 	

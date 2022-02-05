@@ -12,10 +12,10 @@ import com.main.handler.EventHandler;
 @RunWith(MockitoJUnitRunner.class)
 public class ValidateEventHandler {
     
+	public String path = System.getProperty("user.dir") + "\\src\\test\\resources\\com\\test\\resources\\logFileForUnitTest.txt";
     @Test
     public void validateDurationOfEvent() throws Throwable{
     	Map<Object, Map<Object,Object>> expectedTestMap = new LinkedHashMap<>();
-    	String path = System.getProperty("user.dir") + "\\src\\test\\resources\\com\\test\\resources\\logFileForUnitTest.txt";
     	expectedTestMap = EventHandler.getEventDuration(path);
     	long expectedDuration =5;
     	Assert.assertEquals(expectedTestMap.get("scsmbstgra").get("timestamp"), expectedDuration);
@@ -24,7 +24,6 @@ public class ValidateEventHandler {
     @Test
     public void validateHost() throws Throwable{
     	Map<Object, Map<Object,Object>> expectedTestMap = new LinkedHashMap<>();
-    	String path = System.getProperty("user.dir") + "\\src\\test\\resources\\com\\test\\resources\\logFileForUnitTest.txt";
     	expectedTestMap = EventHandler.getEventDuration(path);
     	String expectedHost ="12345";
     	Assert.assertEquals(expectedTestMap.get("scsmbstgra").get("host"), expectedHost);
@@ -33,7 +32,6 @@ public class ValidateEventHandler {
     @Test
     public void validateLogType() throws Throwable{
     	Map<Object, Map<Object,Object>> expectedTestMap = new LinkedHashMap<>();
-    	String path = System.getProperty("user.dir") + "\\src\\test\\resources\\com\\test\\resources\\logFileForUnitTest.txt";
     	expectedTestMap = EventHandler.getEventDuration(path);
     	String expectedLogType ="APPLICATION_LOG";
     	Assert.assertEquals(expectedTestMap.get("scsmbstgra").get("type"), expectedLogType);
@@ -42,7 +40,6 @@ public class ValidateEventHandler {
     @Test
     public void validateAlertStatus() throws Throwable{
     	Map<Object, Map<Object,Object>> expectedTestMap = new LinkedHashMap<>();
-    	String path = System.getProperty("user.dir") + "\\src\\test\\resources\\com\\test\\resources\\logFileForUnitTest.txt";
     	expectedTestMap = EventHandler.getEventStats(path);
     	String expectedAlertStatus ="True";
     	Assert.assertEquals(expectedTestMap.get("scsmbstgra").get("Alert"), expectedAlertStatus);
