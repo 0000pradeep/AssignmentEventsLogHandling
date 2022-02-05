@@ -1,5 +1,9 @@
+## git ignore file , below files / folders will be allowed by git repository##
+
+
 Logs/
-.classpath/
+.classpath
 target/
-.settings/
-Properties/
+.settings
+.metadata/
+.project/
