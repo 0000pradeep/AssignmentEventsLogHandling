@@ -12,4 +12,4 @@ Go to working directory and paste **mvn clean install exec:java -Dexec.mainClass
  
 3) Clean the project and directly run the main class ( com.main.execute.Executor) Right Click > Run As > Java Application
 
-**OUTPUT** - Go to target/db-data/assignmentdb.log  to analysis the result .
+**OUTPUT** - Go to target/db-data/assignmentdb.log  to analysis the result .Also Result can be referred from **Logs > ConsoleLogs > testlog.log** and **Logs > ConsoleLogs > testlog1.log.**
